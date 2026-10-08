@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Aashuuu! 🎂❤️</title>
+    
+    <!-- Popping Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Fredoka:wght@500;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(-45deg, #ff758c, #ff7eb3, #fecfef, #fda085);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Top Corner Name */
+        .top-name {
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 34px;
+            color: #ffffff;
+            font-weight: 700;
+            text-shadow: 2px 2px 10px rgba(216, 27, 96, 0.7);
+            z-index: 10;
+        }
+
+        /* Floating Balloons */
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            font-size: 30px;
+            animation: floatUp 8s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(20deg); opacity: 0; }
+        }
+
+        /* Welcome Overlay Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .welcome-card {
+            background: #ffffff;
+            width: 90%;
+            max-width: 450px;
+            padding: 35px 25px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(233, 30, 99, 0.4);
+            border: 4px solid #ff4081;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .welcome-card h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 46px;
+            color: #d81b60;
+            margin-bottom: 10px;
+        }
+
+        .welcome-card p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .enter-btn {
+            background: linear-gradient(135deg, #ff4081, #ff6e40);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Fredoka', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(255, 64, 129, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .enter-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 25px rgba(255, 64, 129, 0.6);
+        }
+
+        /* Main Container */
+        .container {
+            margin-top: 85px;
+            margin-bottom: 30px;
+            text-align: center;
+            width: 90%;
+            max-width: 550px;
+            background: rgba(255, 255, 255, 0.82);
+            padding: 35px 25px;
+            border-radius: 30px;
+            box-shadow: 0 12px 35px rgba(233, 30, 99, 0.3);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            z-index: 2;
+        }
+
+        .bday-tag {
+            background: #ffe082;
+            color: #f57f17;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        h1.main-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 46px;
+            color: #c2185b;
+            margin-bottom: 8px;
+        }
+
+        p.subtitle {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        /* Category Header Message */
+        .category-header {
+            display: none;
+            margin-bottom: 20px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .category-header h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 38px;
+            color: #d81b60;
+            margin-bottom: 6px;
+        }
+
+        .category-msg {
+            font-size: 14px;
+            font-weight: 600;
+            color: #ad1457;
+            background: #ffe4e8;
+            padding: 12px 18px;
+            border-radius: 18px;
+            display: inline-block;
+            border: 2px dashed #f48fb1;
+            line-height: 1.4;
+        }
+
+        /* Buttons Container */
+        .categories {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cat-btn {
+            background: linear-gradient(135deg, #ff4081, #ff6e40);
+            color: white;
+            border: none;
+            padding: 15px 22px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Fredoka', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.35);
+        }
+
+        .cat-btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 8px 22px rgba(255, 64, 129, 0.5);
+        }
+
+        /* Song Links Container */
+        .song-list {
+            display: none;
+            margin-top: 15px;
+            text-align: left;
+            animation: fadeIn 0.4s ease;
+            max-height: 380px;
+            overflow-y: auto;
+            padding-right: 6px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scrollbar */
+        .song-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .song-list::-webkit-scrollbar-thumb {
+            background: #ff80ab;
+            border-radius: 10px;
+        }
+
+        /* Individual Song Links */
+        .song-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            color: #ad1457;
+            text-decoration: none;
+            padding: 13px 20px;
+            border-radius: 18px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.25s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+            border-left: 6px solid #ff4081;
+        }
+
+        .song-link span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-right: 10px;
+        }
+
+        .song-link:hover {
+            background: #fff0f5;
+            transform: translateX(6px) scale(1.01);
+            color: #880e4f;
+            border-left-color: #d81b60;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #880e4f, #ad1457);
+            margin-top: 20px;
+            display: none;
+            width: 100%;
+        }
+
+        /* Footer */
+        .footer {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            color: #ffffff;
+            text-shadow: 1px 2px 8px rgba(136, 14, 79, 0.6);
+            margin-bottom: 20px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* Exit Modal Popup */
+        .exit-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .exit-card {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            text-align: center;
+            max-width: 380px;
+            width: 85%;
+            border: 3px solid #ff4081;
+            animation: popIn 0.3s ease;
+        }
+
+        .exit-card h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 36px;
+            color: #d81b60;
+            margin-bottom: 10px;
+        }
+
+        .exit-card p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* Confetti Elements */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            z-index: 9999;
+            animation: confettiFall 4s linear infinite;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Birthday Balloons -->
+    <div class="balloon" style="left: 8%; animation-delay: 0s;">🎈</div>
+    <div class="balloon" style="left: 25%; animation-delay: 3s;">🎁</div>
+    <div class="balloon" style="left: 75%; animation-delay: 1.5s;">🎂</div>
+    <div class="balloon" style="left: 88%; animation-delay: 4.5s;">🎈</div>
+
+    <!-- 1. WELCOME OVERLAY MODAL -->
+    <div class="modal-overlay" id="welcomeOverlay">
+        <div class="welcome-card">
+            <h1>Welcome Aashuuu ❤️</h1>
+            <p>Happy Birthday my love! 🎉<br>I made this special playlist hub just for you to celebrate your special day. Click below to open your gift!</p>
+            <button class="enter-btn" onclick="openGift()">Open Your Gift 🎁</button>
+        </div>
+    </div>
+
+    <!-- 2. EXIT INTENT POPUP -->
+    <div class="exit-modal" id="exitModal">
+        <div class="exit-card">
+            <h2>Leaving Already? 🥺</h2>
+            <p>love you so much babbbbu take care 💖</p>
+            <button class="enter-btn" style="padding: 10px 25px; font-size: 15px;" onclick="closeExitModal()">Stay Here 💕</button>
+        </div>
+    </div>
+
+    <!-- Top Corner Name -->
+    <div class="top-name">✨ ashjal ✨</div>
+
+    <!-- Main Music Interface -->
+    <div class="container">
+        <div class="bday-tag">🎂 Birthday Special Edition 🎂</div>
+        <h1 class="main-title" id="mainTitle">Our Special Playlist 🎧</h1>
+        <p class="subtitle" id="subTitle">Pick a mood, and let the music speak...</p>
+
+        <!-- Dynamic Category Header & Message -->
+        <div id="categoryHeader" class="category-header">
+            <h2 id="categoryTitle"></h2>
+            <p id="categoryMsg" class="category-msg"></p>
+        </div>
+
+        <!-- Category Buttons -->
+        <div class="categories" id="buttonContainer">
+            <button class="cat-btn" onclick="showCategory('love', 'Love Songs For You 🥹', 'Every single note reminds me of your gorgeous smile and how lucky I am to have you in my life ❤️')">Love songs for you 🥹</button>
+            <button class="cat-btn" onclick="showCategory('miss', 'Songs When You Miss Me 😚', 'Whenever I am not around, play these tracks and remember I am thinking about you too! 💭')">Songs listen you miss me 😚</button>
+            <button class="cat-btn" onclick="showCategory('fight', 'Songs When We Had Fight 🥺', 'No matter how much we argue, my love for you never changes. Let\'s make up soon, babe 💕')">Songs when we had fight 🥺</button>
+            <button class="cat-btn" onclick="showCategory('flirting', 'I\'m Flirting U Babe.. 😁', 'Just a few songs to make you blush and remind you how ridiculously attractive you are 😉')">I'm flirting u babe.. 😁</button>
+            <button class="cat-btn" onclick="showCategory('alone', 'When You Feel Alone 🫂', 'I\'m always with you babe, don\'t worry! You are never alone as long as I exist ❤️')">When u feel alone (I'm with you) 🫂</button>
+        </div>
+
+        <!-- 1. Love Songs -->
+        <div id="love" class="song-list">
+            <a href="https://open.spotify.com/track/04y4IqZt14y7k7pXYE19Zy" target="_blank" class="song-link"><span>Raataan Lambiyan - Jubin Nautiyal</span> 🎵</a>
+            <a href="https://open.spotify.com/track/2Z6HgNji9cNlFLNORw6wDQ" target="_blank" class="song-link"><span>Perfect - Ed Sheeran</span> 🎵</a>
+            <a href="https://open.spotify.com/track/6q4GmJDbiZ7viOqLHP76cs" target="_blank" class="song-link"><span>Tum Hi Ho - Arijit Singh</span> 🎵</a>
+            <a href="https://open.spotify.com/track/5bQ6oDLqvw8tywmnSmwEyL" target="_blank" class="song-link"><span>Thaitiya - Asim Azhar</span> 🎵</a>
+            <a href="https://open.spotify.com/track/5OMUXgfXsSukZ0zxelpC3b" target="_blank" class="song-link"><span>Pal - Arijit Singh, Shreya Ghoshal</span> 🎵</a>
+            <a href="https://open.spotify.com/track/1aUfggX5E0nKDikNuiDQ3D" target="_blank" class="song-link"><span>Kaise Hua - Vishal Mishra</span> 🎵</a>
+            <a href="https://open.spotify.com/track/4Tkb7zsDmsawB7S5TpKQV1" target="_blank" class="song-link"><span>Apna Bana Le - Arijit Singh</span> 🎵</a>
+            <a href="https://open.spotify.com/track/5llaVhaIoowKT3fqf2NfPO" target="_blank" class="song-link"><span>Janam Janam - Arijit Singh</span> 🎵</a>
+            <a href="https://open.spotify.com/track/69MpAbCg0X0HVUoGcprfq7" target="_blank" class="song-link"><span>Humsafar - Badrinath Ki Dulhania</span> 🎵</a>
+            <a href="https://open.spotify.com/track/2plbrEY59IikOBgBGLjaoe" target="_blank" class="song-link"><span>Enna Sona - Arijit Singh</span> 🎵</a>
+            <a href="https://open.spotify.com/track/3i9UVldZOE0aD0JnyfAZZ0" target="_blank" class="song-link"><span>Ranjha - Shershaah</span> 🎵</a>
+            <a href="https://open.spotify.com/track/5MJ82bMG6LPADqZ8S7V3f1" target="_blank" class="song-link"><span>Bol Do Na Zara - Armaan Malik</span> 🎵</a>
+            <a href="https://open.spotify.com/track/5sUSbJo0brScvv48ZZ1HrQ" target="_blank" class="song-link"><span>Sanam Re - Arijit Singh</span> 🎵</a>
+            <a href="https://open.spotify.com/track/52itZ0w0CydihB2JCZEIft" target="_blank" class="song-link"><span>Dil Diyan Gallan - Atif Aslam</span> 🎵</a>
+            <a href="https://open.spotify.com/track/0rk2X5TAhraBC5aCIXK2Rq" target="_blank" class="song-link"><span>Tera Ban Jaunga - Kabir Singh</span> 🎵</a>
+            <a href="https://open.spotify.com/track/3t3wsY5IdLVzB9WidegJSU" target="_blank" class="song-link"><span>Mere Haath Mein - Fanaa</span> 🎵</a>
+            <a href="https://open.spotify.com/track/5DyYcwMw0f6z3FefXNLOHv" target="_blank" class="song-link"><span>Pehla Nasha - Jo Jeeta Wohi Sikandar</span> 🎵</a>
+            <a href="https://open.spotify.com/track/4yM81JYXs0xobwqtYyYSKM" target="_blank" class="song-link"><span>Kesariya - Brahmāstra</span> 🎵</a>
+        </div>
+
+        <!-- 2. Miss Me -->
+        <div id="miss" class="song-list">
+            <a href="https://open.spotify.com/track/6g0HHWLJwfe2PlbgHi8pBj" target="_blank" class="song-link"><span>Channa Mereya - Arijit Singh</span> 🎵</a>
+            <a href="https://open.spotify.com/track/3gOXq3FPPesm7VLPKmef6j" target="_blank" class="song-link"><span>Jaane Kyun - Dostana</span> 🎵</a>
+            <a href="https://open.spotify.com/track/04y4IqZt14y7k7pXYE19Zy" target="_blank" class="song-link"><span>Main Agar Kahoon - Om Shanti Om</span> 🎵</a>
+            <a href="https://open.spotify.com/track/1WxzZoWBTmB68AtyA6ejBB" target="_blank" class="song-link"><span>Kaise Mujhe - Ghajini</span> 🎵</a>
+            <a href="https://open.spotify.com/track/2sQsgq7QJqGCJ1HsZcORvT" target="_blank" class="song-link"><span>Dooriyan - Love Aaj Kal</span> 🎵</a>
+            <a href="https://open.spotify.com/track/5T2ZZiBMDGh3TZDUbxg4rV" target="_blank" class="song-link"><span>Kabira - Arijit Singh</span> 🎵</a>
+            <a href="https://open.spotify.com/track/6871FKHumiy1Wfr6vF7Xxt" target="_blank" class="song-link"><span>Agar Tum Saath Ho - Tamasha</span> 🎵</a>
+            <a href="https://open.spotify.com/track/7eQl3Yqv35ioqUfveKHitE" target="_blank" class="song-link"><span>Tujhe Kitna Chahne Lage - Kabir Singh</span> 🎵</a>
+            <a href="https://open.spotify.com/track/4km0RUkMMFdx8iDuq36o2w" target="_blank" class="song-link"><span>Tu Hi Re - Bombay</span> 🎵</a>
+            <a href="https://open.spotify.com/track/3zm4wlfbYW9p4mzK8rMIB8" target="_blank" class="song-link"><span>Milne Hai Mujhse Aayi - Aashiqui 2</span> 🎵</a>
+            <a href="https://open.spotify.com/track/4SrVkrpAyykhbVnATbfvPV" target="_blank" class="song-link"><span>Jeene Laga Hoon - Atif Aslam</span> 🎵</a>
+            <a href="https://open.spotify.com/track/55TlMMnPJTk9Qq6CrqB6dx" target="_blank" class="song-link"><span>Main Phir Bhi Tumko Chaahunga</span> 🎵</a>
+            <a href="https://open.spotify.com/track/5a11x5PUFvJEadMRqtNtTr" target="_blank" class="song-link"><span>Saware - Phantom</span> 🎵</a>
+            <a href="https://open.spotify.com/track/3yHyiUDJdz02FZ6jfUbsmY" target="_blank" class="song-link"><span>Pehli Dafa - Atif Aslam</span> 🎵</a>
+            <a href="https://open.spotify.com/track/3oWxFNsXstcancCR1wODR4" target="_blank" class="song-link"><span>Khairiyat - Chhichhore</span> 🎵</a>
+        </div>
+
+        <!-- 3. Had a Fight -->
+        <div id="fight" class="song-list">
+            <a href="https://open.spotify.com/track/37zbIwkUL3wRRaojDeibEs" target="_blank" class="song-link"><span>Galti Se Mistake - Jagga Jasoos</span> 🎵</a>
+            <a href="https://open.spotify.com/track/42LKIOzgYXRoP2SKAK6vWS" target="_blank" class="song-link"><span>Tum Se Hi - Jab We Met</span> 🎵</a>
+            <a href="https://open.spotify.com/track/5T2ZZiBMDGh3TZDUbxg4rV" target="_blank" class="song-link"><span>Sooraj Dooba Hain - Roy</span> 🎵</a>
+            <a href="https://open.spotify.com/track/3zm4wlfbYW9p4mzK8rMIB8" target="_blank" class="song-link"><span>Bulleya - Ae Dil Hai Mushkil</span> 🎵</a>
+            <a href="https://open.spotify.com/track/55TlMMnPJTk9Qq6CrqB6dx" target="_blank" class="song-link"><span>Zalima - Raees</span> 🎵</a>
+            <a href="https://open.spotify.com/track/1nbdXkFXag5byYxOjmeGlE" target="_blank" class="song-link"><span>Galliyan - Ek Villain</span> 🎵</a>
+            <a href="https://open.spotify.com/track/2vR23BjIzpLMtzsyKrM6Mb" target="_blank" class="song-link"><span>Ae Dil Hai Mushkil - Title Track</span> 🎵</a>
+            <a href="https://open.spotify.com/track/4YwGnKgtq7V0EI1hYNOirm" target="_blank" class="song-link"><span>Bekhayali - Kabir Singh</span> 🎵</a>
+            <a href="https://open.spotify.com/track/4BiPsAV070dg3eLSVf727A" target="_blank" class="song-link"><span>Tera Hone Laga Hoon - Ajab Prem Ki Ghazab Kahani</span> 🎵</a>
+            <a href="https://open.spotify.com/track/5h4HUJcttHP0EuMLLdfXyO" target="_blank" class="song-link"><span>Ilahi - Yeh Jawaani Hai Deewani</span> 🎵</a>
+            <a href="https://open.spotify.com/track/3TrdGeV5bEpHezExHlsguD" target="_blank" class="song-link"><span>Badtameez Dil - Yeh Jawaani Hai Deewani</span> 🎵</a>
+            <a href="https://open.spotify.com/track/0joXv5niso2T8YXWOlIe1X" target="_blank" class="song-link"><span>Banjaara - Ek Villain</span> 🎵</a>
+            <a href="https://open.spotify.com/track/2njC2umOngBCOj14iHR8K8" target="_blank" class="song-link"><span>Dilliwali Girlfriend - Yeh Jawaani Hai Deewani</span> 🎵</a>
+            <a href="https://open.spotify.com/track/66DsbQXxuPDDyqfyAdaBLU" target="_blank" class="song-link"><span>Qaafirana - Kedarnath</span> 🎵</a>
+        </div>
+
+        <!-- 4. Flirting -->
+        <div id="flirting" class="song-list">
+            <a href="https://open.spotify.com/track/06g9b0J7o8tULKGPZm0wFK" target="_blank" class="song-link"><span>High Rated Gabru - Guru Randhawa</span> 🎵</a>
+            <a href="https://open.spotify.com/track/2g3o6I7YuKFEUn9OOfuAfP" target="_blank" class="song-link"><span>Proper Patola - Badshah</span> 🎵</a>
+            <a href="https://open.spotify.com/track/6WediUhXDfm8FR3wlM0r3G" target="_blank" class="song-link"><span>Ishq Wala Love - Student of the Year</span> 🎵</a>
+            <a href="https://open.spotify.com/track/1kptwDq9gbWOdmTm6C2bCm" target="_blank" class="song-link"><span>Gulabi Aankhen - Sanam</span> 🎵</a>
+            <a href="https://open.spotify.com/track/5MxiAxvsFQIr8JZi8XRntN" target="_blank" class="song-link"><span>So High - Sidhu Moose Wala</span> 🎵</a>
+            <a href="https://open.spotify.com/track/6bdpj89aYEBjhpsenXAsmO" target="_blank" class="song-link"><span>Hawa Hawa - Mubarakan</span> 🎵</a>
+            <a href="https://open.spotify.com/track/3Uv8BQFN3bQfhkregyMbnx" target="_blank" class="song-link"><span>Coca Cola - Tony Kakkar</span> 🎵</a>
+            <a href="https://open.spotify.com/track/52itZ0w0CydihB2JCZEIft" target="_blank" class="song-link"><span>Main Tera Boyfriend - Raabta</span> 🎵</a>
+            <a href="https://open.spotify.com/track/0IudGhdeJZwJ0Ps6ndtQDt" target="_blank" class="song-link"><span>Dilbar - Satyameva Jayate</span> 🎵</a>
+            <a href="https://open.spotify.com/track/0m23fTE5D9lfYyVyfm5RoL" target="_blank" class="song-link"><span>Kar Gayi Chull - Kapoor & Sons</span> 🎵</a>
+            <a href="https://open.spotify.com/track/4UDFr3P1lRS6seQfmzCjz7" target="_blank" class="song-link"><span>The Hook Up Song - Student of the Year 2</span> 🎵</a>
+            <a href="https://open.spotify.com/track/0cnZafWlODysIp0t8IIjZ6" target="_blank" class="song-link"><span>Chaar Botal Vodka - Yo Yo Honey Singh</span> 🎵</a>
+            <a href="https://open.spotify.com/track/4miR4hZGvWN98NT8bvDRut" target="_blank" class="song-link"><span>Laila Main Laila - Raees</span> 🎵</a>
+        </div>
+
+        <!-- 5. Alone -->
+        <div id="alone" class="song-list">
+            <a href="https://open.spotify.com/track/5T2ZZiBMDGh3TZDUbxg4rV" target="_blank" class="song-link"><span>Tanha Dil - Sonu Nigam</span> 🎵</a>
+            <a href="https://open.spotify.com/track/2rHxwYzdn66nDMmDmmio6W" target="_blank" class="song-link"><span>Let Me Love You - DJ Snake</span> 🎵</a>
+            <a href="https://open.spotify.com/track/5ZKMBzpA8E2dDOmL06pK3J" target="_blank" class="song-link"><span>Stay - The Kid LAROI, Justin Bieber</span> 🎵</a>
+            <a href="https://open.spotify.com/track/53keqrDTkt1GE9hJgUoql4" target="_blank" class="song-link"><span>Faded - Alan Walker</span> 🎵</a>
+            <a href="https://open.spotify.com/track/42LKIOzgYXRoP2SKAK6vWS" target="_blank" class="song-link"><span>Tu Jaane Na - Ajab Prem Ki Ghazab Kahani</span> 🎵</a>
+            <a href="https://open.spotify.com/track/2h2BoxjpyJfhQJSbhARAJ8" target="_blank" class="song-link"><span>Banjaara - Ek Villain</span> 🎵</a>
+            <a href="https://open.spotify.com/track/6nShhhR1LYiOOoheS3xQBL" target="_blank" class="song-link"><span>Control - Zoe Wees</span> 🎵</a>
+            <a href="https://open.spotify.com/track/1fc3vkmvNCs3CRvzpRXViN" target="_blank" class="song-link"><span>Lovely - Billie Eilish, Khalid</span> 🎵</a>
+            <a href="https://open.spotify.com/track/7srKnb4zE4J3zMKYuiXBj7" target="_blank" class="song-link"><span>Let Her Go - Passenger</span> 🎵</a>
+        </div>
+
+        <button class="cat-btn back-btn" id="backBtn" onclick="goBack()">🔙 Back to Categories</button>
+    </div>
+
+    <!-- Bottom Footer -->
+    <div class="footer">love you aashya your sejii 💖</div>
+
+    <!-- JavaScript Interactivity -->
+    <script>
+        // Open Gift / Hide Overlay
+        function openGift() {
+            document.getElementById('welcomeOverlay').style.display = 'none';
+            triggerConfetti();
+        }
+
+        // Trigger Confetti Animation
+        function triggerConfetti() {
+            const colors = ['#ff4081', '#ffeb3b', '#00e676', '#00b0ff', '#e040fb'];
+            for(let i = 0; i < 40; i++) {
+                let confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), 4000);
+            }
+        }
+
+        // Exit Intent Detection
+        let exitShown = false;
+        document.addEventListener('mouseleave', function(e) {
+            if (e.clientY <= 0 && !exitShown) {
+                document.getElementById('exitModal').style.display = 'flex';
+                exitShown = true;
+            }
+        });
+
+        function closeExitModal() {
+            document.getElementById('exitModal').style.display = 'none';
+        }
+
+        // Standard Window Close Alert Backup
+        window.onbeforeunload = function() {
+            return "love you so much babbbbu take care";
+        };
+
+        // Navigation JavaScript
+        function showCategory(categoryId, titleText, customMessage) {
+            document.getElementById('mainTitle').style.display = 'none';
+            document.getElementById('subTitle').style.display = 'none';
+            document.getElementById('buttonContainer').style.display = 'none';
+
+            document.getElementById('categoryTitle').innerText = titleText;
+            document.getElementById('categoryMsg').innerText = customMessage;
+            document.getElementById('categoryHeader').style.display = 'block';
+
+            let lists = document.getElementsByClassName('song-list');
+            for(let i = 0; i < lists.length; i++) {
+                lists[i].style.display = 'none';
+            }
+
+            document.getElementById(categoryId).style.display = 'block';
+            document.getElementById('backBtn').style.display = 'inline-block';
+        }
+
+        function goBack() {
+            let lists = document.getElementsByClassName('song-list');
+            for(let i = 0; i < lists.length; i++) {
+                lists[i].style.display = 'none';
+            }
+
+            document.getElementById('categoryHeader').style.display = 'none';
+            document.getElementById('backBtn').style.display = 'none';
+
+            document.getElementById('mainTitle').style.display = 'block';
+            document.getElementById('subTitle').style.display = 'block';
+            document.getElementById('buttonContainer').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
